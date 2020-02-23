@@ -36,6 +36,7 @@ def getEducation():
 def sendToClient(p):
 
     soup = BeautifulSoup(p,'lxml')
+    news.clear()
 
     for div_tag in soup.find_all('div',{'class':'tdb_module_loop'}):
         try:
