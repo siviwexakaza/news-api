@@ -60,7 +60,7 @@ def sendToClient(p):
 
 @app.route('/',methods=['GET'])
 def index():
-    return jsonify({"Message":"News API works!"})
+    return jsonify({"Message":"Welcome to SA News! To see business news go to /business, to see health news go to /health, to see education news go to /education and for motoring news go to /motoring "})
 
 if __name__ == '__main__':
     app.run(debug= True)
