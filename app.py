@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 import requests
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 BASE_URL ='https://mg.co.za/section/'
 news =[]
@@ -12,22 +16,26 @@ global page
 
 
 @app.route('/business',methods=['GET'])
+@cross_origin()
 def getBusiness():
     page= requests.get(BASE_URL+'business').text
     return sendToClient(page)
 
 @app.route('/health',methods=['GET'])
+@cross_origin()
 def getHealth():
     page= requests.get(BASE_URL+'health').text
     return sendToClient(page)
 
 @app.route('/motoring',methods=['GET'])
+@cross_origin()
 def getMotoring():
     page= requests.get(BASE_URL+'motoring').text
     return sendToClient(page)
 
 
 @app.route('/education',methods=['GET'])
+@cross_origin()
 def getEducation():
     page= requests.get(BASE_URL+'education').text
     return sendToClient(page)
